@@ -1,1 +1,1 @@
-hello me !!!
+Follow us on IG @artifice.nyc
