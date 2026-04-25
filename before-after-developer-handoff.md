@@ -1,9 +1,11 @@
 # Artifice Website Redesign - Developer Handoff
 
 ## Goal
+
 Build a simple, clear, fundraising-ready website that helps visitors understand Artifice and take action quickly.
 
 ## Core Priorities
+
 1. Clear messaging
 2. Visible donation/support flows
 3. Lightweight CMS/editability
@@ -11,6 +13,7 @@ Build a simple, clear, fundraising-ready website that helps visitors understand 
 5. Low-maintenance structure
 
 ## Suggested Stack
+
 - Frontend: Next.js with static-first rendering
 - CMS: Notion, Sanity, or MDX for fast v1
 - Forms: Tally, Typeform, or simple backend form endpoint
@@ -23,7 +26,9 @@ Build a simple, clear, fundraising-ready website that helps visitors understand 
   - Track donate clicks, contact submissions, subscription clicks, event clicks
 
 ## Global Requirements
+
 ### Navigation
+
 - Home
 - About
 - Programs
@@ -34,6 +39,7 @@ Build a simple, clear, fundraising-ready website that helps visitors understand 
 - Persistent Donate button
 
 ### Footer
+
 - Short mission text
 - Donate
 - Subscribe
@@ -42,11 +48,13 @@ Build a simple, clear, fundraising-ready website that helps visitors understand 
 - Newsletter/Substack links
 
 ### Responsive
+
 - Mobile-first layout
 - CTA buttons visible without excessive scrolling
 - Donation CTA prioritized in mobile navigation
 
 ### Accessibility
+
 - Semantic headings
 - Alt text support
 - Color contrast compliance
@@ -54,13 +62,17 @@ Build a simple, clear, fundraising-ready website that helps visitors understand 
 - Form labels and accessible validation states
 
 ### Performance
+
 - Optimize and lazy-load images
 - Avoid heavy animation
 - Prefer static rendering and cached assets where possible
 
 ## Page Requirements
+
 ### Home
+
 #### Modules
+
 - Hero
 - What we do
 - Why Artifice
@@ -70,12 +82,15 @@ Build a simple, clear, fundraising-ready website that helps visitors understand 
 - Footer CTA
 
 #### Functional Needs
+
 - Configurable CTA buttons
 - Editable featured content blocks
 - Editable hero image/documentation modules
 
 ### About
+
 #### Modules
+
 - Mission
 - Vision
 - Why now
@@ -83,26 +98,33 @@ Build a simple, clear, fundraising-ready website that helps visitors understand 
 - Contact
 
 #### Functional Needs
+
 - Editable team section
 - Optional advisor section later
 
 ### Programs
+
 #### Modules
+
 - Overview
 - Program categories
 - Support CTA per program line
 
 #### Functional Needs
+
 - Reusable content blocks
 - Ability to add/change program types later
 
 ### Events
+
 #### Modules
+
 - Upcoming
 - Past
 - Event cards
 
 #### Functional Needs
+
 - Event title
 - Date
 - Location
@@ -111,17 +133,22 @@ Build a simple, clear, fundraising-ready website that helps visitors understand 
 - Optional image
 
 ### Art Index
+
 #### Modules
+
 - Explainer
 - Why it matters
 - Why support it
 - Inquiry CTA
 
 #### Functional Needs
+
 - Static page acceptable for v1
 
 ### Support
+
 #### Modules
+
 - Donation options
 - Subscription support
 - Institutional support
@@ -129,20 +156,25 @@ Build a simple, clear, fundraising-ready website that helps visitors understand 
 - Contact form
 
 #### Functional Needs
+
 - Donation link (off-site)
 - Recurring donation link (off-site)
 - Inquiry form
 - Optional downloadable deck later
 
 ### Subscribe
+
 #### Modules
+
 - Why subscribe
 - What supporters get
 - CTA to paid tier
 - Relation to broader mission
 
 ## CMS Content Model
+
 ### Site Settings
+
 - Nav links
 - Footer copy
 - Donate URL
@@ -153,6 +185,7 @@ Build a simple, clear, fundraising-ready website that helps visitors understand 
 - Social links
 
 ### Pages
+
 - Title
 - Slug
 - SEO title
@@ -160,6 +193,7 @@ Build a simple, clear, fundraising-ready website that helps visitors understand 
 - Body modules
 
 ### Events
+
 - Title
 - Date
 - Status (upcoming/past)
@@ -169,19 +203,23 @@ Build a simple, clear, fundraising-ready website that helps visitors understand 
 - Image
 
 ### Team Members
+
 - Name
 - Role
 - Bio
 - Image
 
 ### Homepage Featured Items
+
 - Title
 - Description
 - Image
 - Link
 
 ## Analytics Events
+
 Track:
+
 - `donate_button_click`
 - `subscribe_click`
 - `partner_inquiry_submit`
@@ -190,7 +228,9 @@ Track:
 - `homepage_cta_click`
 
 ## MVP Definition
+
 Launch with:
+
 - 7 pages
 - Editable homepage modules
 - Working off-site donation and recurring donation links
@@ -200,9 +240,11 @@ Launch with:
 - Mobile-ready responsive layout
 
 ## Open Questions (Tracked for Later)
+
 - Should donation eventually move on-site (Stripe) after v1?
 - Should Events stay manually updated or become CMS-driven immediately after launch?
 - Does Art Index need an evolving data layer in phase 2?
 
 ## Recommendation
+
 Do not overengineer v1. Ship a clean, legible site with strong support CTAs, straightforward CMS control, and fast performance.

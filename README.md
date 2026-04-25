@@ -1,6 +1,6 @@
 # artificenyc.org
 
-**Production deploy** is built from the monorepo at **`../studioartifice.com/`**:
+**Production deploy** is built from the monorepo at `**../studioartifice.com/`**:
 
 - Static export / Framer mirror: `public-org/`
 - Worker + routing: `deploy/artificenyc/`
