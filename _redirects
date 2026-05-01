@@ -1,0 +1,11 @@
+# /support and /donate → PayPal donation page
+/support              https://www.paypal.com/ncp/payment/PKRQF4RGVBSZU  302
+/support/             https://www.paypal.com/ncp/payment/PKRQF4RGVBSZU  302
+/support/*            https://www.paypal.com/ncp/payment/PKRQF4RGVBSZU  302
+/donate               https://www.paypal.com/ncp/payment/PKRQF4RGVBSZU  302
+/donate/*             https://www.paypal.com/ncp/payment/PKRQF4RGVBSZU  302
+# DO NOT add a `/* -> https://www.artificenyc.org/:splat` catch-all here.
+# Cloudflare Pages `_redirects` source paths are NOT host-scoped, so a `/*`
+# rule fires on EVERY domain bound to this project (apex, www, *.pages.dev),
+# which redirects www to itself in an infinite loop. Use a Pages Function
+# (functions/_middleware.ts) if you ever need host-scoped routing.
