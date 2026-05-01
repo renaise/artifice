@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="14" fill="#fff" stroke="#fff">
+  <style>
+    .label { font-weight: 500; letter-spacing: 0.02em; }
+    .verb  { fill: #cccccc; }
+    .arrow { fill: none; stroke-width: 1; }
+    .node  { fill: #fff; stroke: none; }
+  </style>
+
+  <!-- Row 1: linear pipeline RADAR -> PROFILES -> ATLAS -> INDEX -->
+  <g class="row-1">
+    <!-- RADAR -->
+    <text x="20"  y="30" class="label node">RADAR</text>
+    <text x="20"  y="48" class="verb node">[DISCOVER]</text>
+    <!-- arrow -->
+    <line x1="120" y1="26" x2="180" y2="26" class="arrow"/>
+    <polyline points="174,22 180,26 174,30" class="arrow"/>
+
+    <!-- PROFILES -->
+    <text x="190" y="30" class="label node">PROFILES</text>
+    <text x="190" y="48" class="verb node">[CONNECT]</text>
+    <line x1="290" y1="26" x2="350" y2="26" class="arrow"/>
+    <polyline points="344,22 350,26 344,30" class="arrow"/>
+
+    <!-- ATLAS -->
+    <text x="360" y="30" class="label node">ATLAS</text>
+    <text x="360" y="48" class="verb node">[LOCATE]</text>
+    <line x1="430" y1="26" x2="490" y2="26" class="arrow"/>
+    <polyline points="484,22 490,26 484,30" class="arrow"/>
+
+    <!-- INDEX -->
+    <text x="500" y="30" class="label node">INDEX</text>
+    <text x="500" y="48" class="verb node">[ARCHIVE]</text>
+  </g>
+
+  <!-- Branch from INDEX down -->
+  <!-- vertical drop from INDEX -->
+  <line x1="525" y1="58" x2="525" y2="100" class="arrow"/>
+  <!-- horizontal split at y=100 from x=525 to children at x=320 (ARTIFACTS) and x=525 (WORLDS) -->
+  <line x1="320" y1="100" x2="525" y2="100" class="arrow"/>
+  <!-- drop into ARTIFACTS -->
+  <line x1="320" y1="100" x2="320" y2="120" class="arrow"/>
+  <polyline points="316,114 320,120 324,114" class="arrow"/>
+  <!-- drop into WORLDS -->
+  <line x1="525" y1="100" x2="525" y2="120" class="arrow"/>
+  <polyline points="521,114 525,120 529,114" class="arrow"/>
+
+  <!-- Row 2: ARTIFACTS [OBJECTS]   |   WORLDS [CAPTURE] -->
+  <g class="row-2">
+    <text x="280" y="138" class="label node">ARTIFACTS</text>
+    <text x="375" y="138" class="verb node">[OBJECTS]</text>
+
+    <text x="490" y="138" class="label node">WORLDS</text>
+    <text x="565" y="138" class="verb node">[CAPTURE]</text>
+  </g>
+
+  <!-- Branch from WORLDS down to URL and IRL -->
+  <line x1="525" y1="148" x2="525" y2="190" class="arrow"/>
+  <line x1="380" y1="190" x2="525" y2="190" class="arrow"/>
+  <!-- drop into URL -->
+  <line x1="380" y1="190" x2="380" y2="210" class="arrow"/>
+  <polyline points="376,204 380,210 384,204" class="arrow"/>
+  <!-- drop into IRL -->
+  <line x1="525" y1="190" x2="525" y2="210" class="arrow"/>
+  <polyline points="521,204 525,210 529,204" class="arrow"/>
+
+  <!-- Row 3: URL [DIGITAL PROJECTS]   |   IRL [EXPERIENTIAL PROGRAMS] -->
+  <g class="row-3">
+    <text x="340" y="228" class="label node">URL</text>
+    <text x="380" y="228" class="verb node">[DIGITAL PROJECTS]</text>
+
+    <text x="500" y="228" class="label node">IRL</text>
+    <text x="535" y="228" class="verb node">[EXPERIENTIAL PROGRAMS]</text>
+  </g>
+
+  <!-- Footnote / legend (subtle) -->
+  <text x="20" y="320" font-size="11" fill="#888" stroke="none">
+    Pipeline: RADAR &#8594; PROFILES &#8594; ATLAS &#8594; INDEX. INDEX branches into ARTIFACTS (objects) and WORLDS (contexts);
+  </text>
+  <text x="20" y="336" font-size="11" fill="#888" stroke="none">
+    WORLDS branches into URL (digital projects) and IRL (experiential programs).
+  </text>
+</svg>
