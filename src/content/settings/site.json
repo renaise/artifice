@@ -13,7 +13,7 @@
   },
   "nav": {
     "links": [
-      { "label": "ABOUT", "href": "/#about" },
+      { "label": "ABOUT", "href": "/about" },
       { "label": "PROGRAMS", "href": "/#programs" },
       { "label": "RADAR", "href": "#", "soon": true },
       { "label": "INDEX", "href": "https://index.artificenyc.org" },
@@ -78,7 +78,7 @@
       { "label": "LINKEDIN", "href": "https://www.linkedin.com/company/artifice-nyc-org/" }
     ],
     "member": { "label": "BECOME A MEMBER", "href": "https://artificenyc.substack.com/subscribe" },
-    "copyright": "2026 © ARTIFICENYC.ORG"
+    "copyright": "2026 © ARTIFICENYC 5013©"
   },
   "contact": {
     "title": "THINK INSIDE THE BOX",
