@@ -36,24 +36,26 @@ import { site as s } from "../content/settings";
 
     {/* WHITEBOX — SCIENCE / LAB */}
     <section class="sculpt whitebox" id="about">
-      <video class="sculpt-bg" autoplay muted playsinline loop preload="metadata" poster={s.whitebox.image}>
-        <source src={s.whitebox.video} type="video/mp4" />
-      </video>
       <span class="edge left">{s.whitebox.eyebrow}</span>
       <span class="edge right">{s.whitebox.tag}</span>
-      <div class="sculpt-stack" data-slide>
+      <div class="sculpt-stage">
+        <img class="sculpt-art" src={s.whitebox.image} alt={s.whitebox.alt} />
+        <video class="sculpt-media" autoplay muted playsinline loop preload="metadata" poster={s.whitebox.image} data-slide>
+          <source src={s.whitebox.video} type="video/mp4" />
+        </video>
         <img class="sculpt-lockup" src={s.whitebox.lockup} alt="WHITEBOX" />
       </div>
     </section>
 
     {/* BLACKBOX — FICTION / STAGE */}
     <section class="sculpt blackbox">
-      <video class="sculpt-bg" autoplay muted playsinline loop preload="metadata" poster={s.blackbox.image}>
-        <source src={s.blackbox.video} type="video/mp4" />
-      </video>
       <span class="edge left">{s.blackbox.eyebrow}</span>
       <span class="edge right">{s.blackbox.tag}</span>
-      <div class="sculpt-stack" data-slide>
+      <div class="sculpt-stage">
+        <img class="sculpt-art" src={s.blackbox.image} alt={s.blackbox.alt} />
+        <video class="sculpt-media" autoplay muted playsinline loop preload="metadata" poster={s.blackbox.image} data-slide>
+          <source src={s.blackbox.video} type="video/mp4" />
+        </video>
         <img class="sculpt-lockup" src={s.blackbox.lockup} alt="BLACKBOX" />
       </div>
     </section>
@@ -151,21 +153,26 @@ import { site as s } from "../content/settings";
       text-transform: uppercase; color: var(--cream); opacity: 0.92;
     }
 
-    /* SCULPTURE SECTIONS */
+    /* SCULPTURE SECTIONS — large sculpture, video in the center aperture, wordmark below */
     .sculpt {
       position: relative; width: 100%; min-height: 100vh;
       display: flex; align-items: center; justify-content: center; overflow: hidden;
     }
     .sculpt.whitebox { background: #f7f4ec; }
     .sculpt.blackbox { background: #000; }
-    .sculpt-stack {
-      position: relative; display: flex; align-items: center; justify-content: center;
-      width: min(46vw, 520px); will-change: transform;
+    .sculpt-stage {
+      position: relative; width: min(94vw, 1400px);
+      display: flex; align-items: center; justify-content: center;
     }
     .sculpt-art { width: 100%; height: auto; display: block; }
+    .sculpt-media {
+      position: absolute; left: 50%; top: 47%; transform: translate(-50%, -50%);
+      width: clamp(240px, 33%, 620px); aspect-ratio: 1 / 1; object-fit: cover;
+      z-index: 2; will-change: transform;
+    }
     .sculpt-lockup {
-      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-      width: 34%; height: auto; z-index: 2;
+      position: absolute; left: 50%; top: 82%; transform: translate(-50%, -50%);
+      width: clamp(220px, 30%, 460px); height: auto; z-index: 3;
     }
     .sculpt.blackbox .sculpt-lockup { filter: brightness(0) invert(1); }
     .edge {
@@ -218,8 +225,8 @@ import { site as s } from "../content/settings";
 
   <script>
     // Center primitive slides down as each WB/BB section scrolls through the viewport
-    const marks = Array.from(document.querySelectorAll<HTMLElement>(".sculpt-stack[data-slide]"));
-    const SLIDE = 150; // px of total travel
+    const marks = Array.from(document.querySelectorAll<HTMLElement>(".sculpt-media[data-slide]"));
+    const SLIDE = 60; // px of total travel
     let ticking = false;
     function update() {
       const vh = window.innerHeight;
@@ -230,7 +237,7 @@ import { site as s } from "../content/settings";
         const p = (vh - r.top) / (vh + r.height);
         const clamped = Math.max(0, Math.min(1, p));
         const offset = (clamped - 0.5) * 2 * SLIDE;
-        m.style.transform = `translateY(${offset.toFixed(1)}px)`;
+        m.style.transform = `translate(-50%, calc(-50% + ${offset.toFixed(1)}px))`;
       }
       ticking = false;
     }

@@ -17,7 +17,10 @@ const st = f.strip;
 
   <div class="news">
     <p class="news-copy">{f.newsletter.copy}</p>
-    <a class="news-btn" href={f.newsletter.action}>{f.newsletter.button}</a>
+    <form class="news-form" action={f.newsletter.action} method="post" enctype="text/plain">
+      <input class="news-input" type="email" name="email" placeholder={f.newsletter.placeholder} aria-label="Email" />
+      <button class="news-btn" type="submit">{f.newsletter.button}</button>
+    </form>
   </div>
 
   <div class="footrow">
@@ -49,10 +52,18 @@ const st = f.strip;
   .wordmark { width: clamp(180px, 28vw, 320px); height: auto; display: block; filter: brightness(0) invert(1); }
   .news { text-align: center; max-width: 46ch; margin: 6px auto 30px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
   .news-copy { margin: 0; font-family: var(--font-display); font-size: 13px; line-height: 1.5; color: var(--cream); opacity: 0.82; }
+  .news-form { display: flex; align-items: stretch; gap: 10px; }
+  .news-input {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--cream); background: transparent;
+    border: 1px solid rgba(255,255,255,0.22); border-radius: 4px; padding: 9px 16px; min-width: 200px;
+  }
+  .news-input::placeholder { color: rgba(255,255,255,0.45); }
+  .news-input:focus { outline: none; border-color: rgba(255,255,255,0.5); }
   .news-btn {
     font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
     color: var(--cream); background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.22); border-radius: 4px; padding: 9px 18px;
+    border: 1px solid rgba(255,255,255,0.22); border-radius: 4px; padding: 9px 18px; cursor: pointer;
     transition: background 0.2s ease, color 0.2s ease;
   }
   .news-btn:hover { background: var(--cream); color: var(--ink); }

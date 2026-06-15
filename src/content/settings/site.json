@@ -64,6 +64,7 @@
     },
     "newsletter": {
       "copy": "Stay in the loop. Be the first to know about our latest work, exciting updates, and everything else that's happening at Artifice.",
+      "placeholder": "ENTER EMAIL",
       "button": "CONTACT US",
       "action": "mailto:info@artificenyc.org"
     },
