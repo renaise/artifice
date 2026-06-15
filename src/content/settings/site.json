@@ -16,6 +16,7 @@
       { "label": "ABOUT", "href": "/#about" },
       { "label": "PROGRAMS", "href": "/#programs" },
       { "label": "RADAR", "href": "#", "soon": true },
+      { "label": "INDEX", "href": "https://index.artificenyc.org" },
       { "label": "CONTACT", "href": "/contact" }
     ],
     "cta": { "label": "BECOME A MEMBER", "href": "https://artificenyc.substack.com/subscribe" },
@@ -49,9 +50,9 @@
   "programs": {
     "heading": "PROGRAMS",
     "items": [
-      { "name": "CHAPTERS", "for": "For the public", "desc": "Performance-forward conceptual and narrative showcase", "media": "/video/XusG2hsqMkuT2bCg6nR95oE6qSg.mp4", "type": "video", "href": "/#chapters", "logoType": "ring" },
+      { "name": "CHAPTERS", "for": "For the public", "desc": "Performance-forward conceptual and narrative showcase", "media": "/video/KQaTaxCNHqFq4AQkeFoxZDTcUMs.mp4", "type": "video", "href": "/#chapters", "logoType": "ring" },
       { "name": "nodes", "for": "For the industry", "desc": "Research-forward development and demo showcase", "media": "/video/n8BOb9Aj9Yy0yDuZYabAbBS8G3I.mp4", "type": "video", "href": "/#nodes", "logoType": "mark", "logo": "/img/I94yu9RHbv99UpoB3IJHxNsMLAk.png" },
-      { "name": "[ ENTER ]", "for": "For the artist", "desc": "An editorial dispatch built around a single artifact", "media": "/video/KQaTaxCNHqFq4AQkeFoxZDTcUMs.mp4", "type": "video", "href": "https://artificenyc.substack.com", "logoType": "text" }
+      { "name": "[ ENTER ]", "for": "For the artist", "desc": "An editorial dispatch built around a single artifact", "media": "/video/XusG2hsqMkuT2bCg6nR95oE6qSg.mp4", "type": "video", "href": "https://artificenyc.substack.com", "logoType": "text" }
     ]
   },
   "footer": {
