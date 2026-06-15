@@ -1,0 +1,207 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { site as s } from "../content/settings";
+
+const tabs = [
+  { id: "mission", label: "Mission", body: "Artifice NYC is a curatorial research organization exploring the intersection of creative science and new media fictions. Through immersive exhibitions, spatial activations, and a public cultural archive, we investigate how speculative narratives and emerging technologies co-produce the systems that define our future." },
+  { id: "vision", label: "Vision", body: "Artifice NYC advances public understanding of how art, technology, and science fiction co-produce. Through exhibitions, residencies, research programming, and a public cultural archive, we create environments where practitioners, audiences, and institutions can observe, interrogate, and shape the artifacts that define the public imagination." },
+  { id: "what", label: "What We Do", body: "Shape artifacts of the future through nodes (prototype) and chapters (showcase)." },
+];
+
+const board = [
+  { name: "Renaise Kim", role: "Executive Director", photo: "/img/about/team/renaise.jpg" },
+  { name: "Kassandra Schengili", role: "Vice Chair", photo: "/img/about/team/kassandra.jpg" },
+  { name: "Sarah Kim", role: "Treasurer", photo: "/img/about/team/sarah.jpg" },
+  { name: "Ethan Proia", role: "Secretary", photo: "/img/about/team/ethan.jpg" },
+];
+const core = [
+  { name: "Renaise Kim", role: "Creative Director", photo: "/img/about/team/renaise.jpg" },
+  { name: "Kassandra Schengili", role: "Development Director", photo: "/img/about/team/kassandra.jpg" },
+  { name: "Woo Kim", role: "Programs Director", photo: "/img/about/team/woo.jpg" },
+  { name: "Sarah Kim", role: "Communications Manager", photo: "/img/about/team/sarah.jpg" },
+];
+---
+
+<Base title="About — Artifice">
+  <a id="top"></a>
+  <Nav />
+
+  <main>
+    {/* HERO */}
+    <section class="hero">
+      <video class="hero-bg" autoplay muted playsinline loop preload="metadata">
+        <source src={s.hero.video} type="video/mp4" />
+      </video>
+      <div class="hero-center">
+        <img class="hero-lockup" src={s.hero.lockup} alt="Artifice" />
+        <p class="hero-mission">{s.hero.missionA}</p>
+        <p class="hero-mission">{s.hero.missionB}</p>
+        <a class="hero-cta" href={s.hero.cta.href} target="_blank" rel="noopener">{s.hero.cta.label}</a>
+      </div>
+    </section>
+
+    {/* MISSION / VISION / WHAT WE DO — scroll-pinned sequence */}
+    <section class="mvw" id="mvw">
+      <div class="mvw-sticky">
+        <div class="mvw-tabs">
+          {tabs.map((t, i) => (
+            <div class={"mvw-tab" + (i === 0 ? " on" : "")} data-i={i}>
+              <img class="mvw-mark" src="/img/blackbox-mark.png" alt="" />{t.label}
+            </div>
+          ))}
+        </div>
+        <div class="mvw-body">
+          {tabs.map((t, i) => (
+            <p class={"mvw-text" + (i === 0 ? " on" : "")} data-i={i}>{t.body}</p>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* WHITEBOX */}
+    <section class="abox">
+      <div class="abox-mark">
+        <img class="amark-icon" src="/img/whitebox-mark.png" alt="WHITEBOX" />
+        <span class="amark-word">WHITEBOX</span>
+        <span class="amark-sub">SHOWROOM + CONCEPT LAB</span>
+        <span class="amark-eyebrow">SCIENCE</span>
+      </div>
+      <div class="abox-grid"><img src="/img/about/wb-cluster.png" alt="WHITEBOX showcases" loading="lazy" /></div>
+    </section>
+
+    {/* BLACKBOX */}
+    <section class="abox">
+      <div class="abox-mark">
+        <img class="amark-icon" src="/img/blackbox-mark.png" alt="BLACKBOX" />
+        <span class="amark-word">BLACKBOX</span>
+        <span class="amark-sub">NEW MEDIA FICTIONS + STAGE</span>
+        <span class="amark-eyebrow">FICTION</span>
+      </div>
+      <div class="abox-grid"><img src="/img/about/bb-cluster.png" alt="BLACKBOX showcases" loading="lazy" /></div>
+    </section>
+
+    {/* TEAM */}
+    <section class="team-sec">
+      <div class="team-col">
+        <h2>Board of Directors</h2>
+        <div class="team-row">
+          {board.map((m) => (
+            <div class="member">
+              <div class="m-photo"><img src={m.photo} alt={m.name} loading="lazy" onerror="this.style.opacity=0" /></div>
+              <span class="m-name">{m.name}</span>
+              <span class="m-role">{m.role}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="team-col">
+        <h2>Core Team</h2>
+        <div class="team-row">
+          {core.map((m) => (
+            <div class="member">
+              <div class="m-photo"><img src={m.photo} alt={m.name} loading="lazy" onerror="this.style.opacity=0" /></div>
+              <span class="m-name">{m.name}</span>
+              <span class="m-role">{m.role}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* GET INVOLVED */}
+    <section class="involved">
+      <div class="inv-left">
+        <h2>Get involved</h2>
+        <p>Join us in shaping + linking artifacts of the future.</p>
+      </div>
+      <a class="inv-btn" href="mailto:info@artificenyc.org">CONTACT US</a>
+    </section>
+  </main>
+
+  <Footer />
+
+  <style>
+    main { position: relative; z-index: 1; }
+    /* HERO (shared) */
+    .hero { position: relative; width: 100%; height: 64vh; min-height: 460px; overflow: hidden; background: #060606; }
+    .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7); z-index: 0; }
+    .hero-center { position: absolute; left: 50%; top: 52%; transform: translate(-50%,-50%); z-index: 2; width: min(92vw, 560px); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; }
+    .hero-lockup { width: clamp(120px,16vw,190px); height: auto; filter: brightness(0) invert(1); }
+    .hero-mission { margin: 0; max-width: 52ch; font-family: var(--font-display); font-size: 14px; line-height: 1.5; color: var(--cream); opacity: 0.9; }
+    .hero-cta { margin-top: 8px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cream); background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.28); border-radius: 5px; padding: 11px 20px; }
+    .hero-cta:hover { background: var(--cream); color: var(--ink); }
+
+    /* MVW — scroll-pinned sequence */
+    .mvw { position: relative; height: 300vh; background: var(--ink); }
+    .mvw-sticky { position: sticky; top: 0; height: 100vh; display: grid; grid-template-columns: 1fr 1.4fr; gap: 6%; align-items: center; padding: 0 26px; }
+    .mvw-tabs { display: flex; flex-direction: column; gap: 14px; }
+    .mvw-tab { display: flex; align-items: center; gap: 12px;
+      font-family: var(--font-display); font-size: clamp(26px,3vw,40px); letter-spacing: -0.02em; color: #3c3a36; transition: color 0.35s ease; }
+    .mvw-tab.on { color: var(--cream); }
+    .mvw-mark { height: 26px; width: auto; filter: brightness(0) invert(1); opacity: 0; transition: opacity 0.35s ease; }
+    .mvw-tab.on .mvw-mark { opacity: 1; }
+    .mvw-body { position: relative; min-height: 9em; }
+    .mvw-text { position: absolute; inset: 0; opacity: 0; transform: translateY(10px); transition: opacity 0.4s ease, transform 0.4s ease;
+      font-family: var(--font-display); font-size: clamp(20px,2vw,26px); line-height: 1.3; letter-spacing: -0.01em; color: var(--cream); margin: 0; pointer-events: none; }
+    .mvw-text.on { opacity: 1; transform: none; }
+
+    /* WB/BB about boxes */
+    .abox { display: grid; grid-template-columns: 1fr 1fr; gap: 5%; align-items: center; padding: 90px 26px; background: var(--ink); border-top: 1px solid rgba(255,255,255,0.08); }
+    .abox-mark { display: flex; flex-direction: column; gap: 4px; position: relative; }
+    .amark-icon { width: clamp(120px,14vw,190px); height: auto; filter: brightness(0) invert(1); margin-bottom: 14px; }
+    .amark-eyebrow { position: absolute; top: 38%; left: 70px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.18em; color: var(--ink); }
+    .amark-word { font-family: var(--font-display); font-style: italic; font-size: clamp(34px,4.4vw,64px); letter-spacing: -0.01em; color: var(--cream); }
+    .amark-sub { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cream); opacity: 0.65; margin-top: 4px; }
+    .abox-grid img { width: 100%; height: auto; display: block; }
+
+    /* TEAM */
+    .team-sec { display: grid; grid-template-columns: 1fr 1fr; gap: 6%; padding: 80px 26px; background: var(--ink); border-top: 1px solid rgba(255,255,255,0.08); }
+    .team-sec h2 { font-family: var(--font-display); font-size: clamp(22px,2.4vw,30px); font-weight: 400; letter-spacing: -0.01em; color: var(--cream); margin-bottom: 26px; }
+    .team-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .member { display: flex; flex-direction: column; gap: 8px; }
+    .m-photo { aspect-ratio: 1/1; background: #1a1a1a; overflow: hidden; }
+    .m-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .m-name { font-family: var(--font-display); font-size: 13px; color: var(--cream); }
+    .m-role { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cream); opacity: 0.55; }
+
+    /* GET INVOLVED */
+    .involved { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding: 70px 26px; background: var(--ink); border-top: 1px solid rgba(255,255,255,0.08); }
+    .inv-left h2 { font-family: var(--font-display); font-size: clamp(22px,2.4vw,30px); font-weight: 400; color: var(--cream); }
+    .inv-left p { font-family: var(--font-display); font-size: 14px; color: var(--cream); opacity: 0.7; margin-top: 8px; }
+    .inv-btn { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cream); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.22); border-radius: 4px; padding: 11px 20px; }
+    .inv-btn:hover { background: var(--cream); color: var(--ink); }
+
+    @media (max-width: 860px) {
+      .mvw, .abox, .team-sec { grid-template-columns: 1fr; gap: 28px; }
+      .team-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+
+  <script>
+    const sec = document.getElementById("mvw");
+    const tabs = Array.from(document.querySelectorAll<HTMLElement>(".mvw-tab"));
+    const bodies = Array.from(document.querySelectorAll<HTMLElement>(".mvw-text"));
+    const N = tabs.length;
+    let cur = -1, ticking = false;
+    function setActive(i: number) {
+      if (i === cur) return;
+      cur = i;
+      tabs.forEach((t) => t.classList.toggle("on", +(t.dataset.i || 0) === i));
+      bodies.forEach((b) => b.classList.toggle("on", +(b.dataset.i || 0) === i));
+    }
+    function update() {
+      ticking = false;
+      if (!sec) return;
+      const r = sec.getBoundingClientRect();
+      const scrollable = sec.offsetHeight - window.innerHeight;
+      const p = Math.max(0, Math.min(0.999, -r.top / scrollable));
+      setActive(Math.min(N - 1, Math.floor(p * N)));
+    }
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    update();
+  </script>
+</Base>

@@ -1,0 +1,82 @@
+---
+import { site } from "../content/settings";
+const f = site.footer;
+const st = f.strip;
+---
+
+<footer class="footer" id="footer">
+  <div class="strip">
+    <div class="s-col"><span class="s-a">{st.left.a}</span><span class="s-b">{st.left.b}</span></div>
+    <div class="s-col center"><span class="s-a">{st.center.a}</span><span class="s-b">{st.center.b}</span></div>
+    <div class="s-col right"><span class="s-a">{st.right.a}</span><span class="s-b">{st.right.b}</span></div>
+  </div>
+
+  <div class="wordmark-wrap">
+    <img class="wordmark" src={f.wordmark} alt="Artifice" />
+  </div>
+
+  <div class="news">
+    <p class="news-copy">{f.newsletter.copy}</p>
+    <a class="news-btn" href={f.newsletter.action}>{f.newsletter.button}</a>
+  </div>
+
+  <div class="footrow">
+    <nav class="socials">
+      {f.socials.map((s) => (
+        <a href={s.href} target="_blank" rel="noopener">{s.label}</a>
+      ))}
+    </nav>
+    <div class="end">
+      <span class="copy">{f.copyright}</span>
+      <a class="member" href={f.member.href} target="_blank" rel="noopener">{f.member.label}</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer { position: relative; z-index: 1; background: #0a0a0a; color: var(--cream); padding: 0 0 22px; }
+  .strip {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: start;
+    padding: 16px 26px; border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .s-col { display: flex; flex-direction: column; gap: 2px; }
+  .s-col.center { text-align: center; align-items: center; }
+  .s-col.right { text-align: right; align-items: flex-end; }
+  .s-a { font-family: var(--font-display); font-size: 14px; letter-spacing: -0.01em; color: var(--cream); }
+  .s-col.center .s-a { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.8; }
+  .s-b { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cream); opacity: 0.5; }
+  .wordmark-wrap { width: 100%; padding: 48px 26px 20px; display: flex; justify-content: center; }
+  .wordmark { width: clamp(180px, 28vw, 320px); height: auto; display: block; filter: brightness(0) invert(1); }
+  .news { text-align: center; max-width: 46ch; margin: 6px auto 30px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .news-copy { margin: 0; font-family: var(--font-display); font-size: 13px; line-height: 1.5; color: var(--cream); opacity: 0.82; }
+  .news-btn {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--cream); background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.22); border-radius: 4px; padding: 9px 18px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .news-btn:hover { background: var(--cream); color: var(--ink); }
+  .footrow {
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    padding: 18px 26px 0; border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .socials { display: flex; gap: 20px; flex-wrap: wrap; }
+  .socials a, .copy, .member {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--cream); opacity: 0.85;
+  }
+  .socials a { transition: opacity 0.2s ease; }
+  .socials a:hover { opacity: 0.5; }
+  .end { display: flex; gap: 20px; align-items: center; }
+  .copy { opacity: 0.55; }
+  .member {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 4px; padding: 8px 14px; transition: background 0.2s ease, color 0.2s ease;
+  }
+  .member:hover { background: var(--cream); color: var(--ink); }
+  @media (max-width: 720px) {
+    .strip { grid-template-columns: 1fr; gap: 10px; }
+    .s-col.center, .s-col.right { text-align: left; align-items: flex-start; }
+    .footrow { flex-direction: column; align-items: flex-start; }
+  }
+</style>

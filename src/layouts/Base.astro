@@ -1,0 +1,43 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = "Artifice — a science-fiction creative studio based in New York City. Showcasing WhiteBox + BlackBox through focused chapters.",
+  ogImage = "/img/MkPVg8tvyDWPth9Uvp6I32Vfu0.png",
+} = Astro.props;
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, "") ?? "";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <link rel="icon" href="/img/w6si5X5rmkjcNRfQqW2pEwmgZxU.png" />
+    <link rel="apple-touch-icon" href="/img/w6si5X5rmkjcNRfQqW2pEwmgZxU.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

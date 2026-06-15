@@ -1,0 +1,55 @@
+---
+/* Decorative scattered dots over dark sections — mirrors the 76 <use> refs
+   on the live site to a small "white alpha 2" dot SVG (rgba(255,255,255,0.8)).
+   We render N dots in absolute position with deterministic but irregular spacing. */
+
+interface Props {
+  count?: number;
+}
+const { count = 80 } = Astro.props;
+
+/* Deterministic-looking spread using a mulberry-style integer hash */
+function spread(i: number) {
+  let h = (i * 2654435761) >>> 0;
+  h ^= h >>> 16;
+  h = (h * 0x85ebca6b) >>> 0;
+  h ^= h >>> 13;
+  h = (h * 0xc2b2ae35) >>> 0;
+  h ^= h >>> 16;
+  return h / 4294967296;
+}
+
+const dots = Array.from({ length: count }, (_, i) => {
+  const x = spread(i * 17 + 1) * 100;
+  const y = spread(i * 31 + 7) * 100;
+  const s = 1 + spread(i * 53 + 13) * 1.2;
+  const o = 0.5 + spread(i * 89 + 19) * 0.4;
+  return { x, y, s, o };
+});
+---
+
+<div class="star-field" aria-hidden="true">
+  {
+    dots.map((d) => (
+      <span
+        class="star"
+        style={`left: ${d.x.toFixed(2)}%; top: ${d.y.toFixed(2)}%; width: ${d.s.toFixed(2)}px; height: ${d.s.toFixed(2)}px; opacity: ${d.o.toFixed(2)}`}
+      />
+    ))
+  }
+</div>
+
+<style>
+  .star-field {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .star {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+  }
+</style>

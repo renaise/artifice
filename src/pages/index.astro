@@ -1,0 +1,242 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { site as s } from "../content/settings";
+---
+
+<Base title="Artifice — index">
+  <a id="top"></a>
+  <Nav />
+
+  <main>
+    {/* HERO */}
+    <section class="hero">
+      <video class="hero-bg" autoplay muted playsinline loop preload="metadata">
+        <source src={s.hero.video} type="video/mp4" />
+      </video>
+      <div class="hero-center">
+        <img class="hero-lockup" src={s.hero.lockup} alt="Artifice" />
+        <p class="hero-mission">{s.hero.missionA}</p>
+        <p class="hero-mission">{s.hero.missionB}</p>
+        <a class="hero-cta" href={s.hero.cta.href} target="_blank" rel="noopener">{s.hero.cta.label}</a>
+      </div>
+      <div class="strip">
+        <div class="strip-col">
+          <span class="micro">PREVIOUSLY</span>
+          <span class="strip-val">{s.hero.previousLabel}</span>
+        </div>
+        <p class="strip-tag">{s.hero.descriptor}</p>
+        <div class="strip-col right">
+          <span class="micro">UPCOMING</span>
+          <span class="strip-val">{s.hero.upcomingLabel}</span>
+        </div>
+      </div>
+    </section>
+
+    {/* WHITEBOX — SCIENCE / LAB */}
+    <section class="sculpt whitebox" id="about">
+      <video class="sculpt-bg" autoplay muted playsinline loop preload="metadata" poster={s.whitebox.image}>
+        <source src={s.whitebox.video} type="video/mp4" />
+      </video>
+      <span class="edge left">{s.whitebox.eyebrow}</span>
+      <span class="edge right">{s.whitebox.tag}</span>
+      <div class="sculpt-stack" data-slide>
+        <img class="sculpt-lockup" src={s.whitebox.lockup} alt="WHITEBOX" />
+      </div>
+    </section>
+
+    {/* BLACKBOX — FICTION / STAGE */}
+    <section class="sculpt blackbox">
+      <video class="sculpt-bg" autoplay muted playsinline loop preload="metadata" poster={s.blackbox.image}>
+        <source src={s.blackbox.video} type="video/mp4" />
+      </video>
+      <span class="edge left">{s.blackbox.eyebrow}</span>
+      <span class="edge right">{s.blackbox.tag}</span>
+      <div class="sculpt-stack" data-slide>
+        <img class="sculpt-lockup" src={s.blackbox.lockup} alt="BLACKBOX" />
+      </div>
+    </section>
+
+    {/* PROGRAMS */}
+    <section class="programs" id="programs">
+      <div class="prog-grid">
+        {s.programs.items.map((p) => (
+          <a class="prog" href={p.href}>
+            <video class="prog-bg" autoplay muted playsinline loop preload="metadata">
+              <source src={p.media} type="video/mp4" />
+            </video>
+            <div class="prog-top">
+              {p.logoType === "mark" ? (
+                <img class="prog-mark" src={p.logo} alt={p.name} />
+              ) : (
+                <span class="prog-ring">{p.name}</span>
+              )}
+            </div>
+            <div class="prog-body">
+              <span class="prog-for">{p.for}</span>
+              <span class="prog-desc">{p.desc}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+
+  <style>
+    main { position: relative; z-index: 1; }
+    html { scroll-behavior: smooth; }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+      background: #060606;
+      isolation: isolate;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; filter: brightness(0.82); z-index: 0;
+    }
+    .hero-center {
+      position: absolute; left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2; width: min(92vw, 560px);
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      gap: 16px;
+    }
+    .hero-lockup {
+      width: clamp(120px, 16vw, 190px); height: auto;
+      filter: brightness(0) invert(1); margin-bottom: 8px;
+    }
+    .hero-mission {
+      margin: 0; max-width: 52ch;
+      font-family: var(--font-display); font-size: 14px; line-height: 1.5;
+      letter-spacing: -0.01em; color: var(--cream); opacity: 0.92;
+    }
+    .hero-cta {
+      margin-top: 10px;
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--cream);
+      background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 5px; padding: 11px 20px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .hero-cta:hover { background: var(--cream); color: var(--ink); }
+    .strip {
+      position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+      display: grid; grid-template-columns: 1fr 2fr 1fr; align-items: center;
+      gap: 1rem; padding: 14px 26px;
+      background: rgba(0,0,0,0.55);
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .strip-col { display: flex; flex-direction: column; gap: 3px; }
+    .strip-col.right { align-items: flex-end; text-align: right; }
+    .micro {
+      font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--cream); opacity: 0.55;
+    }
+    .strip-val {
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--cream);
+    }
+    .strip-tag {
+      margin: 0; text-align: center;
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--cream); opacity: 0.92;
+    }
+
+    /* SCULPTURE SECTIONS */
+    .sculpt {
+      position: relative; width: 100%; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .sculpt.whitebox { background: #f7f4ec; }
+    .sculpt.blackbox { background: #000; }
+    .sculpt-stack {
+      position: relative; display: flex; align-items: center; justify-content: center;
+      width: min(46vw, 520px); will-change: transform;
+    }
+    .sculpt-art { width: 100%; height: auto; display: block; }
+    .sculpt-lockup {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      width: 34%; height: auto; z-index: 2;
+    }
+    .sculpt.blackbox .sculpt-lockup { filter: brightness(0) invert(1); }
+    .edge {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em;
+      text-transform: uppercase; opacity: 0.6;
+    }
+    .edge.left { left: 26px; } .edge.right { right: 26px; }
+    .sculpt.whitebox .edge { color: #1c1c1c; }
+    .sculpt.blackbox .edge { color: var(--cream); }
+
+    /* PROGRAMS */
+    .programs { background: #0a0a0a; padding: 0; }
+    .prog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .prog {
+      position: relative; aspect-ratio: 3/4; min-height: 480px;
+      overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;
+      padding: 40px 32px;
+    }
+    .prog-bg {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; z-index: 0; filter: brightness(0.7) saturate(1.05);
+      transition: transform 0.6s ease;
+    }
+    .prog:hover .prog-bg { transform: scale(1.05); }
+    .prog::after {
+      content: ""; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.1) 45%, rgba(0,0,0,0.65) 100%);
+    }
+    .prog-top, .prog-body { position: relative; z-index: 2; }
+    .prog-top { display: flex; justify-content: center; padding-top: 12px; }
+    .prog-ring {
+      font-family: var(--font-display); font-size: 18px; letter-spacing: 0.02em;
+      color: #fff; border: 1px solid rgba(255,255,255,0.7); border-radius: 999px;
+      padding: 12px 30px;
+    }
+    .prog-mark { width: 86px; height: auto; filter: brightness(0) invert(1); }
+    .prog-body { display: flex; flex-direction: column; gap: 14px; }
+    .prog-for { font-family: var(--font-display); font-size: 22px; color: #fff; letter-spacing: -0.01em; }
+    .prog-desc { font-family: var(--font-display); font-size: 15px; line-height: 1.35; color: rgba(255,255,255,0.86); max-width: 26ch; }
+
+    @media (max-width: 860px) {
+      .strip { grid-template-columns: 1fr; gap: 6px; text-align: center; }
+      .strip-col, .strip-col.right { align-items: center; text-align: center; }
+      .sculpt-stack { width: 70vw; }
+      .prog-grid { grid-template-columns: 1fr; }
+      .prog { aspect-ratio: 16/10; min-height: 360px; }
+    }
+  </style>
+
+  <script>
+    // Center primitive slides down as each WB/BB section scrolls through the viewport
+    const marks = Array.from(document.querySelectorAll<HTMLElement>(".sculpt-stack[data-slide]"));
+    const SLIDE = 150; // px of total travel
+    let ticking = false;
+    function update() {
+      const vh = window.innerHeight;
+      for (const m of marks) {
+        const sec = m.closest("section") as HTMLElement;
+        if (!sec) continue;
+        const r = sec.getBoundingClientRect();
+        const p = (vh - r.top) / (vh + r.height);
+        const clamped = Math.max(0, Math.min(1, p));
+        const offset = (clamped - 0.5) * 2 * SLIDE;
+        m.style.transform = `translateY(${offset.toFixed(1)}px)`;
+      }
+      ticking = false;
+    }
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    update();
+  </script>
+</Base>

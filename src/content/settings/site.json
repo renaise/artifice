@@ -1,0 +1,86 @@
+{
+  "hero": {
+    "video": "/video/hero-nodesii.mp4",
+    "lockup": "/img/jEdNc3LgvY4ZGW3QKvfUazObk.svg",
+    "previousSlug": "sights-science-fiction",
+    "upcomingSlug": "nodes-ii",
+    "descriptor": "ARTIFICE: THE ARTIFACTS OF SCIENCE FICTION",
+    "previousLabel": "NODES: II",
+    "upcomingLabel": "CHAPTER 006",
+    "missionA": "Artifice NYC is a curatorial research nonprofit working between creative science and new media fictions.",
+    "missionB": "We produce immersive and site-specific showcases, and creative open infrastructure; shaping how speculative practice and emerging technology define our lived experiences.",
+    "cta": { "label": "SUBSCRIBE FOR UPDATES", "href": "https://artificenyc.substack.com/subscribe" }
+  },
+  "nav": {
+    "links": [
+      { "label": "ABOUT", "href": "/#about" },
+      { "label": "PROGRAMS", "href": "/#programs" },
+      { "label": "RADAR", "href": "#", "soon": true },
+      { "label": "CONTACT", "href": "/contact" }
+    ],
+    "cta": { "label": "BECOME A MEMBER", "href": "https://artificenyc.substack.com/subscribe" },
+    "tickerText": "THINK INSIDE THE BOX"
+  },
+  "about": {
+    "heading": "about us",
+    "body": "A SCIENCE-FICTION CREATIVE NONPROFIT BASED IN NEW YORK CITY. WHERE ART + TECHNOLOGY CONVERGE TO SHAPE + LINK ARTIFACTS THROUGH STRATEGY + VISION. ARTIFICE EMBODIES RELATIONAL ARTIFACTS, CONCEPTUALLY SHAPING AESTHETIC DICHOTOMIES WHETHER THAT BE HUMAN / TECH, SCIENCE / FICTION, ANALOG / DIGITAL... WHITEBOX / BLACKBOX."
+  },
+  "whitebox": {
+    "eyebrow": "SCIENCE / LAB",
+    "tag": "WHITEBOX",
+    "image": "/img/PsVFAbTxsfLav9pc4HTZpHpL8qg.png",
+    "video": "/video/RRDGSodDW8IMISFdDsKjwdvDffo.mp4",
+    "lockup": "/img/whitebox-lockup.png",
+    "alt": "WhiteBox — silvery cube sculpture with hexagon mark"
+  },
+  "blackbox": {
+    "eyebrow": "FICTION / STAGE",
+    "tag": "BLACKBOX",
+    "image": "/img/5U9l9MyYOjatSAmKinPcgiZgg.png",
+    "video": "/video/YprJDPAoHh6UOsesdXRnlCde4.mp4",
+    "lockup": "/img/blackbox-lockup.png",
+    "alt": "BlackBox — radial sculpture with asterisk mark"
+  },
+  "nodes": {
+    "eyebrow": "OUR NETWORK",
+    "video": "/video/n8BOb9Aj9Yy0yDuZYabAbBS8G3I.mp4",
+    "mark": "/img/I94yu9RHbv99UpoB3IJHxNsMLAk.png"
+  },
+  "programs": {
+    "heading": "PROGRAMS",
+    "items": [
+      { "name": "CHAPTERS", "for": "For the public", "desc": "Performance-forward conceptual and narrative showcase", "media": "/video/XusG2hsqMkuT2bCg6nR95oE6qSg.mp4", "type": "video", "href": "/#chapters", "logoType": "ring" },
+      { "name": "nodes", "for": "For the industry", "desc": "Research-forward development and demo showcase", "media": "/video/n8BOb9Aj9Yy0yDuZYabAbBS8G3I.mp4", "type": "video", "href": "/#nodes", "logoType": "mark", "logo": "/img/I94yu9RHbv99UpoB3IJHxNsMLAk.png" },
+      { "name": "[ ENTER ]", "for": "For the artist", "desc": "An editorial dispatch built around a single artifact", "media": "/video/KQaTaxCNHqFq4AQkeFoxZDTcUMs.mp4", "type": "video", "href": "https://artificenyc.substack.com", "logoType": "text" }
+    ]
+  },
+  "footer": {
+    "wordmark": "/img/jEdNc3LgvY4ZGW3QKvfUazObk.svg",
+    "mark": "/img/jEdNc3LgvY4ZGW3QKvfUazObk.svg",
+    "strip": {
+      "left": { "a": "nodes", "b": "PROTOTYPE OF ARTIFACTS" },
+      "center": { "a": "WE SHAPE + LINK ARTIFACTS OF THE FUTURE", "b": "THE ARTIFACTS OF SCIENCE FICTION" },
+      "right": { "a": "CHAPTERS", "b": "SHOWCASE OF ARTIFACTS" }
+    },
+    "newsletter": {
+      "copy": "Stay in the loop. Be the first to know about our latest work, exciting updates, and everything else that's happening at Artifice.",
+      "button": "CONTACT US",
+      "action": "mailto:info@artificenyc.org"
+    },
+    "socials": [
+      { "label": "EMAIL", "href": "mailto:info@artificenyc.org" },
+      { "label": "LINKTREE", "href": "https://linktr.ee/artifice.nyc" },
+      { "label": "INSTAGRAM", "href": "https://www.instagram.com/artifice.nyc/" },
+      { "label": "YOUTUBE", "href": "https://www.youtube.com/artifice.nyc/" },
+      { "label": "SUBSTACK", "href": "https://artificenyc.substack.com/" },
+      { "label": "LINKEDIN", "href": "https://www.linkedin.com/company/artifice-nyc-org/" }
+    ],
+    "member": { "label": "BECOME A MEMBER", "href": "https://artificenyc.substack.com/subscribe" },
+    "copyright": "2026 © ARTIFICENYC.ORG"
+  },
+  "contact": {
+    "title": "THINK INSIDE THE BOX",
+    "action": "mailto:hello@artificenyc.org",
+    "cardColor": "rgb(34, 0, 227)"
+  }
+}

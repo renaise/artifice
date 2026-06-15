@@ -1,0 +1,142 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { site as s } from "../content/settings";
+
+const chapters = (await getCollection("chapters"))
+  .filter((c) => /^\d{3}$/.test(c.data.number))
+  .sort((a, b) => b.data.order - a.data.order);
+
+const chapterTicker = chapters.map((c) => c.data.label);
+const chapterOptions = [...chapterTicker, "GENERAL INQUIRY"];
+---
+
+<Base title="Contact · Artifice">
+  <a id="top"></a>
+  <Nav variant="cobalt" tickerItems={chapterTicker} />
+
+  <main>
+    <form class="card" method="POST" action={s.contact.action} enctype="text/plain">
+      <h1 class="title">{s.contact.title}</h1>
+
+      <label class="sr-only" for="email">Email</label>
+      <input id="email" name="email" type="email" required placeholder="email" />
+
+      <label class="sr-only" for="subject">Subject</label>
+      <select id="subject" name="subject" required>
+        <option value="" selected disabled>select a chapter</option>
+        {chapterOptions.map((c) => <option value={c}>{c}</option>)}
+      </select>
+
+      <label class="sr-only" for="message">Message</label>
+      <textarea id="message" name="message" placeholder="your message" rows="5"></textarea>
+
+      <button type="submit" class="submit">Submit</button>
+    </form>
+  </main>
+
+  <Footer />
+
+  <style define:vars={{ cobalt: 'rgb(34, 0, 227)' }}>
+    main {
+      position: relative;
+      z-index: 1;
+      min-height: 70vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 153px 20px 80px;
+    }
+    .card {
+      width: 500px;
+      max-width: 100%;
+      background: var(--cobalt);
+      color: var(--cream);
+      padding: 40px 28px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .title {
+      margin: 0 0 6px;
+      font-family: var(--font-display);
+      font-size: 30px;
+      line-height: 1.05;
+      letter-spacing: -0.4px;
+      text-transform: uppercase;
+      font-weight: 400;
+      color: var(--cream);
+    }
+    input,
+    select,
+    textarea {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.18);
+      border: 1px solid rgba(252, 250, 245, 0.25);
+      color: var(--cream);
+      font-family: var(--font-display);
+      font-size: 14px;
+      line-height: 1.4;
+      letter-spacing: -0.18px;
+      padding: 10px 12px;
+      outline: none;
+      box-sizing: border-box;
+      transition: border-color 0.2s ease;
+    }
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: rgba(252, 250, 245, 0.65);
+    }
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(252, 250, 245, 0.5);
+    }
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23fcfaf5' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 12px;
+      padding-right: 36px;
+    }
+    select:invalid {
+      color: rgba(252, 250, 245, 0.5);
+    }
+    select option {
+      background: var(--cobalt);
+      color: var(--cream);
+    }
+    textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+    .submit {
+      background: var(--ink);
+      color: var(--cream);
+      border: 1px solid rgba(252, 250, 245, 0.15);
+      padding: 12px 14px;
+      font-family: var(--font-display);
+      font-size: 16px;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    .submit:hover {
+      background: #1c1c1c;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+</Base>

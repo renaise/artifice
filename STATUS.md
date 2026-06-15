@@ -3,22 +3,41 @@
 | | |
 |---|---|
 | **Slot** | P2 (Nonprofit identity) |
-| **Phase** | 1 (Strategy → Design transition) |
+| **Phase** | 2 (Design → Build) · scaffold complete |
 | **Repo** | [renaise/artifice](https://github.com/renaise/artifice) |
 | **Default branch** | `main` |
-| **Production URL** | `artificenyc.org` *(domain not yet pointed at this build)* |
-| **Staging URL** | `artificenyc-ss.pages.dev` *(once Cloudflare Pages project is created)* |
+| **Production URL** | `artificenyc.org` *(currently serves Framer; cutover after staging QA)* |
+| **Staging URL** | `staging.artificenyc.pages.dev` *(once first staging deploy lands)* |
 
 ## Current focus
 
-Planning-stage. Repo holds the strategy artifacts:
+Re-implementing the live ECO SYSTEM Framer site in Astro. Strict 1:1 mirror
+of design / copy / media; off-platform. See `prd.md` for full scope and
+`audit.md` for the source-of-truth content capture.
 
-- `artificenyc-website-v1-prd.md` — product requirements
-- `before-after-figma-spec.md` — design specification
-- `before-after-full-copy.md` — full site copy
-- `before-after-developer-handoff.md` — handoff doc
+**Decisions locked (2026-05-24):**
+- Stack: Astro 6 on Cloudflare Pages (matches `studioartifice.com/web`)
+- Type: Helvetica Now Display self-hosted (license risk accepted)
+- Footer: standardize both pages to `© 2026 ARTIFICE NYC, Inc.` (only content deviation from 1:1)
+- VLA cleanup: deferred
 
-Build (Phase 3) has not started. Next gate: Design system v1 + key page comps approved.
+**Completed:**
+- Audit of live site → `audit.md` + `_audit/` raw captures
+- 53 Framer-CDN assets pulled to `public/{fonts,img,video}/` (~177 MB)
+- Astro scaffold (package.json, astro.config.mjs, tsconfig, Base layout,
+  fonts.css, global.css)
+- `Nav`, `Marquee`, `Footer` components
+- `index.astro` — hero (video bg), marquee, upcoming, about manifesto,
+  chapters (LAB+STAGE pillars), services (numbered list), nodes, footer
+- `contact.astro` — chapter archive (WHITEBOX/BLACKBOX 001–005)
+- `npm run build` green, dist/ verified Framer-free (zero references)
+- Index page output: 14.4 KB (vs Framer 574 KB)
+
+**Next:**
+- Local `astro dev` QA — confirm sections render as expected
+- Side-by-side visual diff vs. live Framer site, iterate
+- First Cloudflare Pages staging deploy
+- Production cutover
 
 ## Push convention
 

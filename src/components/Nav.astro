@@ -1,0 +1,83 @@
+---
+import { site } from "../content/settings";
+const n = site.nav;
+---
+
+<header class="nav">
+  <a href="/" class="brand" aria-label="Artifice">
+    <img src="/img/jEdNc3LgvY4ZGW3QKvfUazObk.svg" alt="Artifice" />
+  </a>
+  <nav class="links">
+    {n.links.map((l) => (
+      l.soon ? (
+        <a href={l.href} class="soon"><span class="lbl">{l.label}</span><span class="lbl-hover">COMING SOON</span></a>
+      ) : (
+        <a href={l.href}>{l.label}</a>
+      )
+    ))}
+  </nav>
+  <a class="member" href={n.cta.href} target="_blank" rel="noopener">{n.cta.label}</a>
+</header>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 26px;
+  }
+  .brand img {
+    height: 30px;
+    width: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+  }
+  .links {
+    display: flex;
+    gap: 30px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .links a {
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--cream);
+    opacity: 0.92;
+    transition: opacity 0.2s ease;
+  }
+  .links a:hover {
+    opacity: 0.55;
+  }
+  .links a.soon .lbl-hover { display: none; }
+  .links a.soon:hover .lbl { display: none; }
+  .links a.soon:hover .lbl-hover { display: inline; }
+  .member {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 4px;
+    padding: 9px 16px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .member:hover {
+    background: var(--cream);
+    color: var(--ink);
+  }
+  @media (max-width: 860px) {
+    .links { display: none; }
+    .nav { padding: 14px 18px; }
+  }
+</style>
