@@ -57,13 +57,23 @@ const socials = ["EMAIL", "LINKTREE", "INSTAGRAM", "YOUTUBE", "SUBSTACK", "LINKE
           ))}
         </div>
       </div>
+      <div class="mvw-stack">
+        {tabs.map((t) => (
+          <div class="mvw-item">
+            <div class="mvw-ilabel"><img class="mvw-mark" src="/img/about/mission-mark.svg" alt="" />{t.label}</div>
+            <p class="mvw-ibody">{t.body}</p>
+          </div>
+        ))}
+      </div>
     </section>
 
     {/* WHITEBOX */}
     <section class="abox">
       <div class="abox-mark">
-        <span class="amark-eyebrow">SCIENCE</span>
-        <img class="amark-icon" src="/img/whitebox-mark.png" alt="WHITEBOX" />
+        <div class="amark-icon-wrap">
+          <img class="amark-icon" src="/img/whitebox-mark.png" alt="WHITEBOX" />
+          <span class="amark-eyebrow">SCIENCE</span>
+        </div>
         <img class="amark-word" src="/img/wb-word.png" alt="WHITEBOX" />
         <span class="amark-sub">SHOWROOM + CONCEPT LAB</span>
       </div>
@@ -73,8 +83,10 @@ const socials = ["EMAIL", "LINKTREE", "INSTAGRAM", "YOUTUBE", "SUBSTACK", "LINKE
     {/* BLACKBOX */}
     <section class="abox">
       <div class="abox-mark">
-        <span class="amark-eyebrow dark">FICTION</span>
-        <img class="amark-icon" src="/img/blackbox-mark.png" alt="BLACKBOX" />
+        <div class="amark-icon-wrap">
+          <img class="amark-icon" src="/img/blackbox-mark.png" alt="BLACKBOX" />
+          <span class="amark-eyebrow dark">FICTION</span>
+        </div>
         <img class="amark-word" src="/img/bb-word.png" alt="BLACKBOX" />
         <span class="amark-sub">NEW MEDIA FICTIONS + STAGE</span>
       </div>
@@ -115,10 +127,10 @@ const socials = ["EMAIL", "LINKTREE", "INSTAGRAM", "YOUTUBE", "SUBSTACK", "LINKE
         <h2>Get involved</h2>
         <p>Join us in shaping + linking artifacts of the future.</p>
       </div>
-      <form class="inv-form" action="mailto:info@artificenyc.org" method="post" enctype="text/plain">
-        <input class="inv-input" type="email" name="email" placeholder="ENTER EMAIL" aria-label="Email" />
-        <button class="pill" type="submit">CONTACT US</button>
-      </form>
+      <div class="inv-form">
+        <input class="inv-input" type="email" name="email" placeholder="ENTER EMAIL" aria-label="Email" autocomplete="off" />
+        <a class="pill" href="mailto:info@artificenyc.org">CONTACT US</a>
+      </div>
     </section>
 
     {/* FOOTER */}
@@ -176,13 +188,18 @@ const socials = ["EMAIL", "LINKTREE", "INSTAGRAM", "YOUTUBE", "SUBSTACK", "LINKE
     .mvw-body { position: relative; min-height: 8em; }
     .mvw-text { position: absolute; inset: 0; opacity: 0; transform: translateY(10px); transition: opacity 0.4s ease, transform 0.4s ease; font-family: var(--font-display); font-size: clamp(22px,2.6vw,48px); line-height: 1.1; letter-spacing: -0.01em; color: #fff; margin: 0; pointer-events: none; }
     .mvw-text.on { opacity: 1; transform: none; }
+    .mvw-stack { display: none; }
+    .mvw-ilabel { display: flex; align-items: center; gap: 16px; font-family: var(--font-display); font-size: clamp(30px,8vw,40px); line-height: 1.1; color: #fff; margin-bottom: 14px; }
+    .mvw-ilabel .mvw-mark { width: 34px; opacity: 1; }
+    .mvw-ibody { font-family: var(--font-display); font-size: clamp(18px,4.6vw,22px); line-height: 1.3; letter-spacing: -0.01em; color: #fff; margin: 0; }
 
     /* WB/BB about boxes */
     .abox { display: grid; grid-template-columns: 1fr 1fr; gap: 5%; align-items: center; padding: clamp(60px,7vw,110px) clamp(40px,4vw,64px); max-width: 1920px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.12); }
     .abox-mark { display: flex; flex-direction: column; align-items: flex-start; position: relative; }
-    .amark-eyebrow { font-family: var(--font-mono); font-size: 16px; letter-spacing: 0; text-transform: uppercase; color: #fff; position: absolute; top: 38%; left: clamp(120px, 13vw, 195px); }
+    .amark-icon-wrap { position: relative; display: inline-block; }
+    .amark-eyebrow { position: absolute; left: 50%; top: 47%; transform: translate(-50%, -50%); font-family: var(--font-mono); font-size: clamp(11px, 1.1vw, 16px); letter-spacing: 0; text-transform: uppercase; color: #fff; white-space: nowrap; pointer-events: none; }
     .amark-eyebrow.dark { color: #0e0e0e; }
-    .amark-icon { width: clamp(180px, 18vw, 320px); height: auto; filter: brightness(0) invert(1); }
+    .amark-icon { width: clamp(180px, 18vw, 320px); height: auto; display: block; filter: brightness(0) invert(1); }
     .amark-word { width: clamp(200px, 17vw, 327px); height: auto; display: block; margin-top: 18px; }
     .amark-sub { font-family: var(--font-display); font-size: clamp(15px, 1.4vw, 24px); letter-spacing: 0; text-transform: uppercase; color: #fff; margin-top: 10px; }
     .abox-grid img { width: 100%; height: auto; display: block; }
@@ -220,9 +237,31 @@ const socials = ["EMAIL", "LINKTREE", "INSTAGRAM", "YOUTUBE", "SUBSTACK", "LINKE
     .afx-right .pill { font-size: clamp(12px,1.2vw,16px); }
 
     @media (max-width: 900px) {
-      .mvw-sticky, .abox, .team-sec { grid-template-columns: 1fr; gap: 30px; }
-      .team-row { grid-template-columns: 1fr 1fr; }
-      .afx-footrow { flex-direction: column; align-items: flex-start; }
+      /* MVW: no pinned/sliding behavior on mobile — stack statically */
+      .mvw { height: auto !important; }
+      .mvw-sticky { display: none; }
+      .mvw-stack { display: flex; flex-direction: column; gap: clamp(36px,9vw,52px); padding: clamp(48px,10vw,64px) 24px; }
+
+      .abox { grid-template-columns: 1fr; gap: 36px; }
+      .abox-mark { align-items: center; text-align: center; }
+      .abox-grid { order: -1; }
+
+      .team-sec { grid-template-columns: 1fr; gap: 48px; }
+      .team-row { grid-template-columns: 1fr 1fr; gap: 18px; }
+
+      .involved { flex-direction: column; align-items: flex-start; gap: 22px; }
+      .inv-form { width: 100%; }
+      .inv-input { flex: 1; min-width: 0; }
+
+      .afx-footrow { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .afx-right { flex-wrap: wrap; }
+      .afx-socials { gap: 16px 22px; }
+    }
+    @media (max-width: 520px) {
+      .team-row { grid-template-columns: 1fr; max-width: 320px; }
+      .hero-mission { font-size: 13px; }
+      .afx-right { width: 100%; justify-content: space-between; }
+      .afx-right .pill { flex: 1; }
     }
   </style>
 

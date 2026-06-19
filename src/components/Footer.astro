@@ -17,10 +17,10 @@ const st = f.strip;
 
   <div class="news">
     <p class="news-copy">{f.newsletter.copy}</p>
-    <form class="news-form" action={f.newsletter.action} method="post" enctype="text/plain">
-      <input class="news-input" type="email" name="email" placeholder={f.newsletter.placeholder} aria-label="Email" />
-      <button class="news-btn" type="submit">{f.newsletter.button}</button>
-    </form>
+    <div class="news-form">
+      <input class="news-input" type="email" name="email" placeholder={f.newsletter.placeholder} aria-label="Email" autocomplete="off" />
+      <a class="news-btn" href={f.newsletter.action}>{f.newsletter.button}</a>
+    </div>
   </div>
 
   <div class="footrow">
