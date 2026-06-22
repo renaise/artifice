@@ -5,35 +5,11 @@ import Footer from "../components/Footer.astro";
 import { site as s } from "../content/settings";
 ---
 
-<Base title="Artifice — index">
+<Base title="ARTIFICE">
   <a id="top"></a>
   <Nav />
 
   <main>
-    {/* HERO */}
-    <section class="hero">
-      <video class="hero-bg" autoplay muted playsinline loop preload="metadata">
-        <source src={s.hero.video} type="video/mp4" />
-      </video>
-      <div class="hero-center">
-        <img class="hero-lockup" src={s.hero.lockup} alt="Artifice" />
-        <p class="hero-mission">{s.hero.missionA}</p>
-        <p class="hero-mission">{s.hero.missionB}</p>
-        <a class="hero-cta" href={s.hero.cta.href} target="_blank" rel="noopener">{s.hero.cta.label}</a>
-      </div>
-      <div class="strip">
-        <div class="strip-col">
-          <span class="micro">PREVIOUSLY</span>
-          <span class="strip-val">{s.hero.previousLabel}</span>
-        </div>
-        <p class="strip-tag">{s.hero.descriptor}</p>
-        <div class="strip-col right">
-          <span class="micro">UPCOMING</span>
-          <span class="strip-val">{s.hero.upcomingLabel}</span>
-        </div>
-      </div>
-    </section>
-
     {/* WHITEBOX — SCIENCE / LAB */}
     <section class="sculpt whitebox" id="about">
       <span class="edge left">{s.whitebox.eyebrow}</span>
@@ -75,6 +51,30 @@ import { site as s } from "../content/settings";
             </div>
           </a>
         ))}
+      </div>
+    </section>
+
+    {/* HERO — moved to bottom */}
+    <section class="hero">
+      <video class="hero-bg" autoplay muted playsinline loop preload="metadata">
+        <source src={s.hero.video} type="video/mp4" />
+      </video>
+      <div class="hero-center">
+        <img class="hero-lockup" src={s.hero.lockup} alt="Artifice" />
+        <p class="hero-mission">{s.hero.missionA}</p>
+        <p class="hero-mission">{s.hero.missionB}</p>
+        <a class="hero-cta" href={s.hero.cta.href} target="_blank" rel="noopener">{s.hero.cta.label}</a>
+      </div>
+      <div class="strip">
+        <div class="strip-col">
+          <span class="micro">PREVIOUSLY</span>
+          <span class="strip-val">{s.hero.previousLabel}</span>
+        </div>
+        <p class="strip-tag">{s.hero.descriptor}</p>
+        <div class="strip-col right">
+          <span class="micro">UPCOMING</span>
+          <span class="strip-val">{s.hero.upcomingLabel}</span>
+        </div>
       </div>
     </section>
   </main>
@@ -233,5 +233,24 @@ import { site as s } from "../content/settings";
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll, { passive: true });
     update();
+
+    // Nav theme: dark chrome while the cream WHITEBOX section sits under the fixed nav
+    const nav = document.querySelector(".nav");
+    const lightSections = Array.from(document.querySelectorAll<HTMLElement>(".sculpt.whitebox"));
+    const NAV_LINE = 30; // approx vertical center of the nav
+    let navTicking = false;
+    function navTheme() {
+      navTicking = false;
+      if (!nav) return;
+      const overLight = lightSections.some((el) => {
+        const r = el.getBoundingClientRect();
+        return r.top <= NAV_LINE && r.bottom >= NAV_LINE;
+      });
+      nav.classList.toggle("nav--light", overLight);
+    }
+    function onNavScroll() { if (!navTicking) { navTicking = true; requestAnimationFrame(navTheme); } }
+    window.addEventListener("scroll", onNavScroll, { passive: true });
+    window.addEventListener("resize", onNavScroll, { passive: true });
+    navTheme();
   </script>
 </Base>

@@ -76,6 +76,17 @@ const n = site.nav;
     background: var(--cream);
     color: var(--ink);
   }
+  /* Light-section variant — dark chrome over cream sections (e.g. WHITEBOX) */
+  .nav.nav--light { transition: color 0.25s ease; }
+  .nav.nav--light .brand img { filter: brightness(0); }
+  .nav.nav--light .links a { color: #1c1c1c; }
+  .nav.nav--light .member {
+    color: #1c1c1c;
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.28);
+  }
+  .nav.nav--light .member:hover { background: #1c1c1c; color: var(--cream); }
+  .brand img, .links a { transition: filter 0.25s ease, color 0.25s ease; }
   @media (max-width: 860px) {
     .links { display: none; }
     .nav { padding: 14px 18px; }
