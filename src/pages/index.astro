@@ -10,6 +10,30 @@ import { site as s } from "../content/settings";
   <Nav />
 
   <main>
+    {/* HERO */}
+    <section class="hero">
+      <video class="hero-bg" autoplay muted playsinline loop preload="metadata">
+        <source src={s.hero.video} type="video/mp4" />
+      </video>
+      <div class="hero-center">
+        <img class="hero-lockup" src={s.hero.lockup} alt="Artifice" />
+        <p class="hero-mission">{s.hero.missionA}</p>
+        <p class="hero-mission">{s.hero.missionB}</p>
+        <a class="hero-cta" href={s.hero.cta.href} target="_blank" rel="noopener">{s.hero.cta.label}</a>
+      </div>
+      <div class="strip">
+        <div class="strip-col">
+          <span class="micro">PREVIOUSLY</span>
+          <span class="strip-val">{s.hero.previousLabel}</span>
+        </div>
+        <p class="strip-tag">{s.hero.descriptor}</p>
+        <div class="strip-col right">
+          <span class="micro">UPCOMING</span>
+          <span class="strip-val">{s.hero.upcomingLabel}</span>
+        </div>
+      </div>
+    </section>
+
     {/* WHITEBOX — SCIENCE / LAB */}
     <section class="sculpt whitebox" id="about">
       <span class="edge left">{s.whitebox.eyebrow}</span>
@@ -45,38 +69,13 @@ import { site as s } from "../content/settings";
                 <span class="prog-ring">{p.name}</span>
               )}
             </div>
-            <div class="prog-body">
-              <span class="prog-for">{p.for}</span>
-              <span class="prog-desc">{p.desc}</span>
-            </div>
+            <span class="prog-for">{p.for}</span>
+            <span class="prog-desc">{p.desc}</span>
           </a>
         ))}
       </div>
     </section>
 
-    {/* HERO — moved to bottom */}
-    <section class="hero">
-      <video class="hero-bg" autoplay muted playsinline loop preload="metadata">
-        <source src={s.hero.video} type="video/mp4" />
-      </video>
-      <div class="hero-center">
-        <img class="hero-lockup" src={s.hero.lockup} alt="Artifice" />
-        <p class="hero-mission">{s.hero.missionA}</p>
-        <p class="hero-mission">{s.hero.missionB}</p>
-        <a class="hero-cta" href={s.hero.cta.href} target="_blank" rel="noopener">{s.hero.cta.label}</a>
-      </div>
-      <div class="strip">
-        <div class="strip-col">
-          <span class="micro">PREVIOUSLY</span>
-          <span class="strip-val">{s.hero.previousLabel}</span>
-        </div>
-        <p class="strip-tag">{s.hero.descriptor}</p>
-        <div class="strip-col right">
-          <span class="micro">UPCOMING</span>
-          <span class="strip-val">{s.hero.upcomingLabel}</span>
-        </div>
-      </div>
-    </section>
   </main>
 
   <Footer />
@@ -156,7 +155,8 @@ import { site as s } from "../content/settings";
     .sculpt.blackbox { background: #000; }
     .sculpt-stage {
       position: relative; width: min(46vw, 520px); aspect-ratio: 1 / 1;
-      overflow: hidden; display: flex; align-items: center; justify-content: center;
+      overflow: hidden; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
     }
     .sculpt-art { width: 124%; height: 124%; object-fit: contain; display: block; }
     .edge {
@@ -169,45 +169,47 @@ import { site as s } from "../content/settings";
     .sculpt.blackbox .edge { color: var(--cream); }
 
     /* PROGRAMS */
-    .programs { background: #0a0a0a; padding: 0; }
-    .prog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .programs { background: #000; padding: 0 26px 26px; }
+    .prog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 21px; }
     .prog {
-      position: relative; aspect-ratio: 3/4; min-height: 480px;
-      overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;
-      padding: 40px 32px;
+      position: relative; aspect-ratio: 609/760; min-height: 520px;
+      overflow: hidden; border-radius: 12px;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      justify-content: space-between;
+      padding: 64px 32px 56px;
     }
     .prog-bg {
       position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover; z-index: 0; filter: brightness(0.7) saturate(1.05);
+      object-fit: cover; z-index: 0; filter: brightness(0.62) saturate(1.05);
       transition: transform 0.6s ease;
     }
     .prog:hover .prog-bg { transform: scale(1.05); }
     .prog::after {
       content: ""; position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.1) 45%, rgba(0,0,0,0.65) 100%);
+      background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.08) 45%, rgba(0,0,0,0.6) 100%);
     }
-    .prog-top, .prog-body { position: relative; z-index: 2; }
-    .prog-top { display: flex; justify-content: center; padding-top: 12px; }
+    .prog-top, .prog-for, .prog-desc { position: relative; z-index: 2; }
+    .prog-top { display: flex; justify-content: center; }
     .prog-ring {
       font-family: var(--font-display); font-size: 18px; letter-spacing: 0.02em;
       color: #fff; border: 1px solid rgba(255,255,255,0.7); border-radius: 999px;
       padding: 12px 30px;
     }
     .prog-text {
-      font-family: var(--font-display); font-size: 22px; letter-spacing: 0.12em;
-      color: #fff;
+      font-family: var(--font-mono); font-size: clamp(24px,2.6vw,40px); letter-spacing: 0.04em;
+      color: #fff; text-transform: uppercase;
     }
-    .prog-mark { width: 86px; height: auto; filter: brightness(0) invert(1); }
-    .prog-body { display: flex; flex-direction: column; gap: 14px; }
-    .prog-for { font-family: var(--font-display); font-size: 22px; color: #fff; letter-spacing: -0.01em; }
-    .prog-desc { font-family: var(--font-display); font-size: 15px; line-height: 1.35; color: rgba(255,255,255,0.86); max-width: 26ch; }
+    .prog-mark { width: clamp(96px,9vw,132px); height: auto; filter: brightness(0) invert(1); }
+    .prog-for { font-family: var(--font-display); font-size: clamp(24px,2.5vw,36px); color: #fff; letter-spacing: -0.01em; }
+    .prog-desc { font-family: var(--font-display); font-weight: 300; font-size: clamp(17px,1.9vw,28px); line-height: 1.15; color: #fff; max-width: 18ch; }
 
     @media (max-width: 860px) {
       .strip { grid-template-columns: 1fr; gap: 6px; text-align: center; }
       .strip-col, .strip-col.right { align-items: center; text-align: center; }
       .sculpt-stack { width: 70vw; }
-      .prog-grid { grid-template-columns: 1fr; }
-      .prog { aspect-ratio: 16/10; min-height: 360px; }
+      .programs { padding: 0 14px 14px; }
+      .prog-grid { grid-template-columns: 1fr; gap: 14px; }
+      .prog { aspect-ratio: 16/11; min-height: 380px; }
     }
   </style>
 
