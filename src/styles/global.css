@@ -1,31 +1,62 @@
 @import "./fonts.css";
 
-/* Tokens — observed from live artificenyc.org (see _capture/SPEC.md) */
+/* ============================================================
+   ARTIFICE DESIGN TOKENS  ·  see src/styles/TOKENS.md
+   Sourced from Figma "AFXHQ — Brand" variables.
+   Rule for agents: reference Tier-2+ tokens only.
+   Never use a raw hex or a Tier-1 primitive inside a component.
+   ============================================================ */
 :root {
-  /* Surface */
-  --cream: #fcfaf5; /* primary body bg + cream-on-dark text (rgb 252,250,245) */
-  --ink: #000000; /* primary text */
-  --ink-soft: #1c1c1c; /* secondary near-black */
-  --off-dark: #0a0a0a;
+  /* ---- Tier 1 · Primitives (raw brand values — do NOT reference directly) ---- */
+  --black: #000000;          /* Figma: artificenyc.org/Black */
+  --white: #ffffff;          /* Figma: Color 1 / White */
+  --white-linen: #fcfaf5;    /* Figma: White Linen / grey-97 */
+  --grey-88: #e0e0e0;        /* Figma: grey-88 */
+  --near-black: #1c1c1c;
+  --off-black: #0a0a0a;
+  --grad-dark: #0e0e0e;      /* footer gradient start */
+  --grad-fade: #414141;      /* footer gradient end */
+  --cobalt: #0000ee;         /* link blue */
 
-  /* Accent */
-  --cobalt: #0000ee; /* classic link blue (live value) */
+  /* ---- Tier 2 · Semantic roles (reference THESE) ---- */
+  --bg: var(--black);             /* default (dark) page background */
+  --bg-light: var(--white-linen); /* light sections — WHITEBOX */
+  --surface: var(--off-black);    /* raised surface on dark */
+  --fg: var(--white-linen);       /* text + marks on dark */
+  --fg-invert: var(--black);      /* text + marks on light */
+  --text-muted: rgba(252, 250, 245, 0.6);
+  --rule: rgba(252, 250, 245, 0.12);   /* hairline rule on dark */
+  --rule-invert: rgba(0, 0, 0, 0.14);  /* hairline rule on light */
+  --accent: var(--cobalt);
+  --footer-bg: linear-gradient(180deg, var(--grad-dark) 0%, var(--grad-dark) 87%, var(--grad-fade) 100%);
 
-  /* Aliases for legacy components */
-  --bg: var(--ink);
-  --fg: var(--cream);
-  --muted: rgba(252, 250, 245, 0.6);
-  --rule: rgba(252, 250, 245, 0.12);
+  /* legacy semantic aliases (kept until components migrate) */
+  --ink: var(--black);
+  --ink-soft: var(--near-black);
+  --off-dark: var(--off-black);
+  --muted: var(--text-muted);
 
-  /* Type — exact family names so font-family on a node falls back the same way it does on live */
+  /* ---- Tier 3 · Type ---- */
   --font-display: "Helvetica Now Display Regular", "Helvetica Now Display Regular Placeholder", sans-serif;
-  --font-body: "Inter", "Inter Placeholder", sans-serif;
+  --font-body: "Helvetica Now Display Regular", "Helvetica Now Display Regular Placeholder", sans-serif;
   --font-mono: "Fragment Mono", ui-monospace, monospace;
+  --text-display: clamp(40px, 6vw, 96px);
+  --text-h1: clamp(34px, 4.4vw, 64px);
+  --text-h2: clamp(24px, 3vw, 48px);
+  --text-body: clamp(15px, 1.2vw, 18px);
+  --text-label: 11px;            /* mono labels / eyebrows */
+  --tracking-tight: -0.02em;
+  --tracking-label: 0.06em;
 
-  /* Spatial */
+  /* ---- Tier 4 · Space / radius / motion ---- */
   --container: min(1440px, 100% - 2rem);
-  --radius-sm: 6px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --radius-sm: 6px;             /* media frames */
+  --radius-md: 12px;            /* program cards */
+  --radius-pill: 999px;
   --radius-dot: 50%;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);  /* ease-out-quint */
+  --dur: 0.25s;
 }
 
 * {
@@ -53,8 +84,8 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: var(--ink);
-  color: var(--cream);
+  background: var(--bg);
+  color: var(--fg);
   font-family: var(--font-display);
   font-size: 12px;
   line-height: 22.8px;

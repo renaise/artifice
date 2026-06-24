@@ -50,7 +50,7 @@ const n = site.nav;
     font-size: 12px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--cream);
+    color: var(--fg);
     opacity: 0.92;
     transition: opacity 0.2s ease;
   }
@@ -65,7 +65,7 @@ const n = site.nav;
     font-size: 11px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--cream);
+    color: var(--fg);
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.22);
     border-radius: 4px;
@@ -73,7 +73,7 @@ const n = site.nav;
     transition: background 0.2s ease, color 0.2s ease;
   }
   .member:hover {
-    background: var(--cream);
+    background: var(--fg);
     color: var(--ink);
   }
   /* Light-section variant — dark chrome over cream sections (e.g. WHITEBOX) */
@@ -85,7 +85,7 @@ const n = site.nav;
     background: rgba(0, 0, 0, 0.04);
     border-color: rgba(0, 0, 0, 0.28);
   }
-  .nav.nav--light .member:hover { background: #1c1c1c; color: var(--cream); }
+  .nav.nav--light .member:hover { background: #1c1c1c; color: var(--fg); }
   .brand img, .links a { transition: filter 0.25s ease, color 0.25s ease; }
   @media (max-width: 860px) {
     .links { display: none; }

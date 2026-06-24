@@ -1,12 +1,13 @@
 ---
 import Base from "../layouts/Base.astro";
 import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
 import { site as s } from "../content/settings";
 
 const tabs = [
-  { label: "Mission", body: "Artifice NYC is a curatorial research organization exploring the intersection of creative science and new media fictions. Through immersive exhibitions, spatial activations, and a public cultural archive, we investigate how speculative narratives and emerging technologies co-produce the systems that define our future." },
-  { label: "Vision", body: "Artifice NYC advances public understanding of how art, technology, and science fiction co-produce. Through exhibitions, residencies, research programming, and a public cultural archive, we create environments where practitioners, audiences, and institutions can observe, interrogate, and shape the artifacts that define the public imagination." },
-  { label: "What We Do", body: "We shape artifacts of the future through nodes (prototype) and chapters (showcase), and link them into a public cultural archive." },
+  { label: "Mission", body: "Artifice NYC is a curatorial research nonprofit working between creative science and new media fictions. We produce immersive, site-specific showcases and open creative infrastructure, a public archive practitioners build and control, shaping how speculative practice and emerging technology define the way we live." },
+  { label: "Vision", body: "A future where experimental work reaches the public while it is still being made, and the record of how it was made stays open for anyone to read." },
+  { label: "What We Do", body: "We show the artifacts of science fiction across Chapters and nodes, and keep a public record of their making in the Artifact Index." },
 ];
 
 const board = [
@@ -30,18 +31,7 @@ const socials = ["EMAIL", "LINKTREE", "INSTAGRAM", "YOUTUBE", "SUBSTACK", "LINKE
   <Nav />
 
   <main>
-    {/* HERO */}
-    <section class="hero">
-      <img class="hero-bg" src="/img/about/hero-about.jpg" alt="" />
-      <div class="hero-center">
-        <img class="hero-lockup" src={s.hero.lockup} alt="Artifice" />
-        <p class="hero-mission">{s.hero.missionA}</p>
-        <p class="hero-mission">{s.hero.missionB}</p>
-        <a class="pill" href={s.hero.cta.href} target="_blank" rel="noopener">SUBSCRIBE FOR UPDATES</a>
-      </div>
-    </section>
-
-    {/* MISSION / VISION / WHAT WE DO — scroll-pinned sequence */}
+    {/* MISSION / VISION / WHAT WE DO — scroll-pinned sequence (opens the page; no duplicate hero) */}
     <section class="mvw" id="mvw">
       <div class="mvw-sticky">
         <div class="mvw-tabs">
@@ -125,40 +115,17 @@ const socials = ["EMAIL", "LINKTREE", "INSTAGRAM", "YOUTUBE", "SUBSTACK", "LINKE
     <section class="involved">
       <div class="inv-left">
         <h2>Get involved</h2>
-        <p>Join us in shaping + linking artifacts of the future.</p>
+        <p>Membership keeps the artifacts of science fiction in public and the record open.</p>
       </div>
-      <div class="inv-form">
+      <form class="inv-form" action="https://artificenyc.substack.com/subscribe" method="get" target="_blank" rel="noopener">
         <input class="inv-input" type="email" name="email" placeholder="ENTER EMAIL" aria-label="Email" autocomplete="off" />
-        <a class="pill" href="mailto:info@artificenyc.org">CONTACT US</a>
-      </div>
+        <button class="pill" type="submit">JOIN THE LIST</button>
+      </form>
     </section>
 
-    {/* FOOTER */}
-    <footer class="afx-footer">
-      <img class="afx-wordmark" src="/img/about/artifice-wordmark.png" alt="Artifice" />
-      <div class="afx-footrow">
-        <div class="afx-left">
-          <a class="afx-info" href="mailto:info@artificenyc.org">info@artificenyc.org</a>
-          <nav class="afx-socials">
-            {socials.map((l) => (
-              <a href={
-                l === "EMAIL" ? "mailto:info@artificenyc.org" :
-                l === "LINKTREE" ? "https://linktr.ee/artifice.nyc" :
-                l === "INSTAGRAM" ? "https://www.instagram.com/artifice.nyc/" :
-                l === "YOUTUBE" ? "https://www.youtube.com/artifice.nyc/" :
-                l === "SUBSTACK" ? "https://artificenyc.substack.com/" :
-                "https://www.linkedin.com/company/artifice-nyc-org/"
-              } target="_blank" rel="noopener">{l}</a>
-            ))}
-          </nav>
-        </div>
-        <div class="afx-right">
-          <a class="afx-donate" href="https://artificenyc.substack.com/subscribe" target="_blank" rel="noopener">DONATE</a>
-          <a class="pill big" href="https://artificenyc.substack.com/subscribe" target="_blank" rel="noopener">SUBSCRIBE TO OUR MAILING LIST</a>
-        </div>
-      </div>
-    </footer>
   </main>
+
+  <Footer />
 
   <style>
     main { position: relative; z-index: 1; background: linear-gradient(180deg, #0e0e0e 0%, #0e0e0e 87%, #2c2c2c 100%); }
@@ -197,7 +164,7 @@ const socials = ["EMAIL", "LINKTREE", "INSTAGRAM", "YOUTUBE", "SUBSTACK", "LINKE
     .abox { display: grid; grid-template-columns: 1fr 1fr; gap: 5%; align-items: center; padding: clamp(60px,7vw,110px) clamp(40px,4vw,64px); max-width: 1920px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.12); }
     .abox-mark { display: flex; flex-direction: column; align-items: flex-start; position: relative; }
     .amark-icon-wrap { position: relative; display: inline-block; }
-    .amark-eyebrow { position: absolute; left: 50%; top: 47%; transform: translate(-50%, -50%); font-family: var(--font-mono); font-size: clamp(11px, 1.1vw, 16px); letter-spacing: 0; text-transform: uppercase; color: #fff; white-space: nowrap; pointer-events: none; }
+    .amark-eyebrow { position: absolute; left: 50%; top: 51%; transform: translate(-50%, -50%); font-family: var(--font-mono); font-size: clamp(11px, 1.1vw, 16px); letter-spacing: 0; text-transform: uppercase; color: #fff; white-space: nowrap; pointer-events: none; }
     .amark-eyebrow.dark { color: #0e0e0e; }
     .amark-icon { width: clamp(180px, 18vw, 320px); height: auto; display: block; filter: brightness(0) invert(1); }
     .amark-word { width: clamp(200px, 17vw, 327px); height: auto; display: block; margin-top: 18px; }
