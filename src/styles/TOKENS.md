@@ -60,8 +60,13 @@ Legacy aliases still resolve (`--ink`→black, `--ink-soft`→near-black,
 | `--text-h2` | `clamp(24px, 3vw, 48px)` |
 | `--text-body` | `clamp(15px, 1.2vw, 18px)` |
 | `--text-label` | `11px` (mono labels) |
-| `--tracking-tight` | `-0.02em` (display) |
+| `--tracking-tight` | `-0.02em` (display, ≈ −1.5%) |
 | `--tracking-label` | `0.06em` (mono labels) |
+| `--leading-display` | `1` (headings — 100% per spec) |
+| `--leading-tight` | `1.15` (subheads, dense copy) |
+| `--leading-body` | `1.3` (running body) |
+
+**Leading runs tight.** Artifice sets headings at 100% leading and body close to it — never the airy 1.5–1.6 default. **Fragment Mono is UPPERCASE only**, and **no camelCase** (`WHITEBOX` / `BLACKBOX`, never `WhiteBox`). Never set the `○✱` glyphs as text — refer to "the lockup."
 
 Pairing: one display sans + one mono. Never add a third family. Cursive
 WHITEBOX/BLACKBOX/ARTIFICE wordmarks are **art assets (PNG/SVG)**, not fonts.

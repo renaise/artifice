@@ -45,8 +45,12 @@
   --text-h2: clamp(24px, 3vw, 48px);
   --text-body: clamp(15px, 1.2vw, 18px);
   --text-label: 11px;            /* mono labels / eyebrows */
-  --tracking-tight: -0.02em;
+  --tracking-tight: -0.02em;     /* -1.5% per type spec */
   --tracking-label: 0.06em;
+  /* Leading — Artifice runs tight (type spec: 100% on display) */
+  --leading-display: 1;          /* headings / display */
+  --leading-tight: 1.15;         /* subheads, dense copy */
+  --leading-body: 1.3;           /* running body */
 
   /* ---- Tier 4 · Space / radius / motion ---- */
   --container: min(1440px, 100% - 2rem);
