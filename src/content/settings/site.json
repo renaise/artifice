@@ -19,7 +19,7 @@
       { "label": "INDEX", "href": "https://index.artificenyc.org" },
       { "label": "CONTACT", "href": "/contact" }
     ],
-    "cta": { "label": "BECOME A MEMBER", "href": "https://artificenyc.substack.com/subscribe" },
+    "cta": { "label": "BECOME A MEMBER", "href": "https://www.zeffy.com/en-US/ticketing/membership-98" },
     "tickerText": "THINK INSIDE THE BOX"
   },
   "about": {
@@ -77,7 +77,7 @@
       { "label": "SUBSTACK", "href": "https://artificenyc.substack.com/" },
       { "label": "LINKEDIN", "href": "https://www.linkedin.com/company/artifice-nyc-org/" }
     ],
-    "member": { "label": "BECOME A MEMBER", "href": "https://artificenyc.substack.com/subscribe" },
+    "member": { "label": "BECOME A MEMBER", "href": "https://www.zeffy.com/en-US/ticketing/membership-98" },
     "copyright": "2026 © ARTIFICENYC 5013©"
   },
   "contact": {
